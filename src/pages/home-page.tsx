@@ -39,6 +39,7 @@ const HomePage = () => {
     navigate("/login");
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSelect = (eventKey: any) => {
     setSelectedMenu(
       eventKey === "#asia"
@@ -49,6 +50,7 @@ const HomePage = () => {
         ? "All"
         : ""
     );
+    setPage(1);
   };
 
   const loadMore = () => {
@@ -71,6 +73,7 @@ const HomePage = () => {
           `https://restcountries.com/v2/all?fields=name,region,flag`
         );
         setApiData(response.data); // Store the entire data set
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (err) {
         setError("Failed to fetch data");
       } finally {
@@ -189,9 +192,9 @@ const HomePage = () => {
           {error && <div>{error}</div>}
 
           {countriesToShow.length > 0 ? (
-            countriesToShow.map((item, index) => (
+            countriesToShow.map((item) => (
               <Col
-                key={index}
+                // key={index}
                 sm={12}
                 md={6}
                 lg={6}
